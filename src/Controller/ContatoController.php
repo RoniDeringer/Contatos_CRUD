@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Contato;
+use App\Entity\Pessoa;
 use App\Form\ContatoType;
 use App\Repository\ContatoRepository;
+use App\Repository\PessoaRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,5 +81,15 @@ class ContatoController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute("contato_index");
+    }
+
+     /**
+     * @Route("/visualizar/{id}",name="pessoa_visualizar")
+     */
+    public function visualizar($id, ContatoRepository $contatoRepository, PessoaRepository $pessoaRepository): Response
+    {
+        $data['titulo']   =  "Tabela de Pessoa";
+        $data['contatos'] = $contatoRepository->findBy(['idPessoa' => $id]);
+        return $this-> renderForm('visualizar.html.twig', $data);
     }
 }

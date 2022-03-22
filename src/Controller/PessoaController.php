@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Pessoa;
+use App\Entity\Contato;
 use App\Form\PessoaType;
+use App\Repository\ContatoRepository;
 use App\Repository\PessoaRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,7 +58,7 @@ class PessoaController extends AbstractController
         $data['pessoas'] = $pessoaRepository->findBy(['nome' => $pessoaPesquisada]);  //procura no bd o nome pesquisado
         return $this->renderForm('pessoa/index.html.twig',$data);
     }
-    
+
 
     /**
      * @Route("/pessoa/adicionar",name="pessoa_adicionar")
@@ -112,5 +114,15 @@ class PessoaController extends AbstractController
         $em->remove($pessoa);
         $em->flush();
         return $this->redirectToRoute('pessoa_index');
+    }
+
+      /**
+     * @Route("/visualizar/{id}",name="pessoa_visualizar")
+     */
+    public function visualizar($id, ContatoRepository $contatoRepository, PessoaRepository $pessoaRepository): Response
+    {
+        $data['titulo']   =  "Tabela de Pessoa";
+        $data['contatos'] =  $contatoRepository->findBy(['idPessoa' => $id]);
+        return $this-> renderForm('visualizar.html.twig', $data);
     }
 }

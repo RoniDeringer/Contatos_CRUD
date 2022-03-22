@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ titulo }} {% endblock %}
+{% block body %}
+
+<h1>{{ titulo }} </h1>
+
+<hr>
+<!--
+Tabela mostrando a primeira linha
+-->
+<table class="table"border="1px">
+    <thead>
+        <tr>
+            <td><b>    Id              </b></td>
+            <td><b>    Tipo            </b></td>
+            <td><b>    Descrição       </b></td>
+            <td><b>    Nome da Pessoa  </b></td>
+        </tr>
+    </thead>
+    <tbody>
+    <!--
+    For percorrendo tabela contatos pra mostrar contatos vinculados ao id de pessoa
+    -->
+        {% for contato in contatos %}
+        <tr>
+            <td> {{ contato.id }} </td>
+            <td> 
+            <!-- exibir valores boolean de 'tipo' -->
+                {% if contato.tipo == '1' %} 
+                        Email
+                    {% else %}
+                        Telefone
+                    {% endif %}
+            </td>
+            <td> {{ contato.descricao }}     </td>
+            <td> {{ contato.idPessoa.nome }} </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}
