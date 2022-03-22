@@ -7,7 +7,7 @@ serei breve!
 ________________________________________________________________________________________________________________________________
 
 Baixe o arquivo .zip em seu computador, ou clone direto pelo github. 
-    Para isso use </br>$ git clone https://github.com/RoniDeringer/CRUD_Contatos.git
+    Para isso use </br>$ git clone https://github.com/RoniDeringer/Contatos_CRUD.git
     
 abra a pasta em seu editor 
 
