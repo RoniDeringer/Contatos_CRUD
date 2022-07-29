@@ -1,5 +1,5 @@
 # CRUD_Contatos
-CRUD com 2 tabelas relacionadas feito com Composer, Doctrine e Symfony
+CRUD com 2 tabelas relacionadas feito com Doctrine e Symfony
 
 Olá, seja bem vindo ao meu projeto.
 Nesse Readme será explicado o passo a passo para rodar o projeto em sua máquina,
